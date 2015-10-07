@@ -1,0 +1,22 @@
+@(recetas: List[Receta])
+
+@main("Receta") {
+    <h2>Inserte una receta:</h2>
+
+    <form action="/insert" method="POST">
+        <input name="nombre" type="text"/>
+        <input name="ingredientes" type="text"/>
+        <input name="instrucciones" type="text"/>
+        <input name="imagen" type="text"/>
+        <input type="submit"/>
+    </form>
+
+    <h2>Lista de recetas</h2>
+    <!-- Falta implementar que muestre una card por cada receta ingresada -->
+    <table>
+        <tr><th>Nombre</th></tr>
+        @for(r <- recetas) {
+            <tr><td>@r.nombre</td></tr>
+        }
+    </table>
+}
