@@ -1,22 +1,19 @@
 @(recetas: List[Receta])
 
-@main("Receta") {
-    <h2>Inserte una receta:</h2>
-
-    <form action="/insert" method="POST">
-        <input name="nombre" type="text"/>
-        <input name="ingredientes" type="text"/>
-        <input name="instrucciones" type="text"/>
-        <input name="imagen" type="text"/>
-        <input type="submit"/>
-    </form>
-
-    <h2>Lista de recetas</h2>
-    <!-- Falta implementar que muestre una card por cada receta ingresada -->
-    <table>
-        <tr><th>Nombre</th></tr>
+    @main("Receta") {
+        <form action="/insert" method="POST">
+            <input name="nombre" type="text" placeholder="Nombre de la receta"/>
+            <input name="ingredientes" type="text" placeholder="Ingredientes"/>
+            <input name="instrucciones" type="text" placeholder="Instrucciones"/>
+            <input name="imagen" type="text" placeholder="Imagen"/>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <h2>Lista de recetas</h2>
+        <table>
         @for(r <- recetas) {
-            <tr><td>@r.nombre</td></tr>
+            @views.html.recetaCard(r)
         }
-    </table>
-}
+        </table>
+    }
